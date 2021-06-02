@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Loading</title>
+		<style>
+			img {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			div{
+				text-align: center;
+				font-family: Arial;
+			}
+		</style>
+	</head>
+
+	<body style="background-color:#1C273A">
+		<img src="{{ url_for('static', filename='loading.gif') }}" alt="Please Wait...">
+		<div style="color:white" >Please wait... Loading...</p>
+	</body>
+	<script> window.location.replace('/concalls'); </script>
+</html>

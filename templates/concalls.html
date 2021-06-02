@@ -1,0 +1,56 @@
+<html lang="en">
+	<head>
+		<title>StockInfo</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<style>
+			th{
+				position: sticky; 
+				top: 0;
+			}
+			
+			.darkmode{
+				background-color:#212529;
+				color:#ffffff;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<script>
+			function toggleMode(){
+				var state = document.getElementById("mode").innerHTML;
+				document.getElementById("table").classList.toggle("table-dark");
+				document.getElementById("mode").innerHTML = (state=="Dark Mode") ? "Light Mode" : "Dark Mode";
+			}
+		</script>
+		
+		<h3 style="text-align:center">Earning call transcripts</h3>
+		<div class="container-fluid">
+			<table id="table" class="table table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th>Symbol</th>
+						<th>Name</th>
+						<th><button id="mode" type="button" class="btn btn-light" onclick="toggleMode()">Dark Mode</button></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for record in records %}
+						{% if 'Transcript' in record['HEADLINE'] %}
+						<tr>
+							<td>{{record['SCRIP_CD']}}</td>
+							<td><a href = "{{record['NSURL']}}" target="_blank" rel="noopener noreferrer">{{record['SLONGNAME']}}</a></td>
+							<td><a class="btn btn-success" onclick= "https://www.bseindia.com/xml-data/corpfiling/AttachLive/{{record['ATTACHMENTNAME']}}" target="_blank" rel="noopener noreferrer">Transcript</a></td>
+						</tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		</div>	
+	<body>
+<html>
