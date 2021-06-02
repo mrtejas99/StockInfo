@@ -5,7 +5,7 @@ from flask import Flask, render_template
 import requests_cache
 
 app = Flask(__name__)
-requests_cache.install_cache('listing_cache', backend='sqlite', expire_after=180)
+requests_cache.install_cache('listing_cache', backend='sqlite', expire_after=14400)
 
 @app.route('/favicon.png')  
 def favicon():
@@ -30,6 +30,3 @@ def concalls():
     print("Current Time: {0} / Used Cache: {1}".format(datetime.now().strftime("%H:%M:%S"), data.from_cache))
     res=data.json()
     return render_template("concalls.html", records=res['Table'])
-
-if __name__ == '__main__':
-    app.run(debug = True)
