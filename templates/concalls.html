@@ -11,12 +11,14 @@
 				position: sticky; 
 				top: 0;
 			}
-			
-			.darkmode{
-				background-color:#212529;
-				color:#ffffff;
+			h3{
+				margin: 2% 0% 2% 0%;
 			}
-			
+			footer{ 
+				min-height:50px;
+				text-align: center;
+				margin: 2% 0% 2% 0%;
+			}
 		</style>
 	</head>
 	<body>
@@ -24,6 +26,7 @@
 			function toggleMode(){
 				var state = document.getElementById("mode").innerHTML;
 				document.getElementById("table").classList.toggle("table-dark");
+       
 				document.getElementById("mode").innerHTML = (state=="Dark Mode") ? "Light Mode" : "Dark Mode";
 			}
 		</script>
@@ -35,22 +38,33 @@
 					<tr>
 						<th>Symbol</th>
 						<th>Name</th>
-						<th><button id="mode" type="button" class="btn btn-light" onclick="toggleMode()">Dark Mode</button></th>
+						<th colspan = "2"><button id="mode" type="button" class="btn btn-light float-right" onclick="toggleMode()">Dark Mode</button></th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for record in records %}
 						{% if 'Transcript' in record['HEADLINE'] %}
-						<tr>
-							<td>{{record['SCRIP_CD']}}</td>
-							<td><a href = "{{record['NSURL']}}" target="_blank" rel="noopener noreferrer">{{record['SLONGNAME']}}</a></td>
-							<td><a href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/{{record['ATTACHMENTNAME']}}" target="_blank" rel="noopener noreferrer">Transcript</a></td>
-						</tr>
+							<tr>
+								<td>{{record['SCRIP_CD']}}</td>
+								<td><a href = "{{record['NSURL']}}" target="_blank" rel="noopener noreferrer">{{record['SLONGNAME']}}</a></td>
+								<td><a class= "btn btn-info" href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/{{record['ATTACHMENTNAME']}}" target="_blank" rel="noopener noreferrer">Transcript</a></td>
+								<td></td>
+							</tr>
+						{% elif 'Presentation' in record['HEADLINE'] %}
+							<tr>
+								<td>{{record['SCRIP_CD']}}</td>
+								<td><a href = "{{record['NSURL']}}" target="_blank" rel="noopener noreferrer">{{record['SLONGNAME']}}</a></td>
+								<td></td>
+								<td><a class= "btn btn-warning" href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/{{record['ATTACHMENTNAME']}}" target="_blank" rel="noopener noreferrer">Presentation</a></td>
+							</tr>
 						{% endif %}
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
-		</div>	
+		<footer>
+			Made with &#x1F497; in <a href="https://en.wikipedia.org/wiki/India" >भारत </a>
+			<p>Tejas Lotlikar<p>
+		</footer>
 	<body>
 <html>
