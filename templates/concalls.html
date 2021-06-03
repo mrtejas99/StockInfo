@@ -38,7 +38,7 @@
 					<tr>
 						<th>Symbol</th>
 						<th>Name</th>
-						<th colspan = "2"><button id="mode" type="button" class="btn btn-light float-right" onclick="toggleMode()">Dark Mode</button></th>
+						<th><button id="mode" type="button" class="btn btn-light float-right" onclick="toggleMode()">Dark Mode</button></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,13 +48,11 @@
 								<td>{{record['SCRIP_CD']}}</td>
 								<td><a href = "{{record['NSURL']}}" target="_blank" rel="noopener noreferrer">{{record['SLONGNAME']}}</a></td>
 								<td><a class= "btn btn-info" href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/{{record['ATTACHMENTNAME']}}" target="_blank" rel="noopener noreferrer">Transcript</a></td>
-								<td></td>
 							</tr>
 						{% elif 'Presentation' in record['HEADLINE'] %}
 							<tr>
 								<td>{{record['SCRIP_CD']}}</td>
 								<td><a href = "{{record['NSURL']}}" target="_blank" rel="noopener noreferrer">{{record['SLONGNAME']}}</a></td>
-								<td></td>
 								<td><a class= "btn btn-warning" href="https://www.bseindia.com/xml-data/corpfiling/AttachLive/{{record['ATTACHMENTNAME']}}" target="_blank" rel="noopener noreferrer">Presentation</a></td>
 							</tr>
 						{% endif %}
