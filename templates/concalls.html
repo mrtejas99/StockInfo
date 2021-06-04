@@ -19,6 +19,12 @@
 				text-align: center;
 				margin: 2% 0% 2% 0%;
 			}
+			.back-to-top {
+				position: fixed;
+				bottom: 25px;
+				right: 25px;
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
@@ -29,6 +35,22 @@
        
 				document.getElementById("mode").innerHTML = (state=="Dark Mode") ? "Light Mode" : "Dark Mode";
 			}
+			$(document).ready(function(){
+				$(window).scroll(function () {
+						if ($(this).scrollTop() > 50) {
+							$('#back-to-top').fadeIn();
+						} else {
+							$('#back-to-top').fadeOut();
+						}
+					});
+					// scroll body to 0px on click
+					$('#back-to-top').click(function () {
+						$('body,html').animate({
+							scrollTop: 0
+						}, 400);
+						return false;
+					});
+			});
 		</script>
 		
 		<h3 style="text-align:center">Earning call transcripts</h3>
@@ -59,6 +81,7 @@
 					{% endfor %}
 				</tbody>
 			</table>
+			<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button">^</a>
 		</div>
 		<footer>
 			Made with &#x1F497; in <a href="https://en.wikipedia.org/wiki/India" >भारत </a>
