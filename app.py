@@ -21,7 +21,7 @@ def index():
 @app.route("/concalls") #main route
 def concalls():
     current = date.today()
-    previous = current + relativedelta(months=-1) #go 1 months back
+    previous = current + relativedelta(months=-3) #go 3 months back
 
     print("previous date is {} and current date is {}".format(previous, current)) 
 
